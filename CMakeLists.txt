@@ -17,6 +17,27 @@ set (PROJECT_NAME ${CURRENT_FOLDER})
 
 # Set C++ Standart
 set(CMAKE_CXX_STANDARD 17)
+set (CMAKE_CXX_FLAGS "-Wall")
+set (CMAKE_CXX_FLAGS "-pedantic")
+set (CMAKE_CXX_FLAGS "-Wextra")
+set (CMAKE_CXX_FLAGS "-Werror")
+set (CMAKE_CXX_FLAGS "-Wfatal-errors")
+set (CMAKE_CXX_FLAGS "-pedantic-errors")
+set (CMAKE_CXX_FLAGS "-Wundef")
+set (CMAKE_CXX_FLAGS "-Wshadow")
+set (CMAKE_CXX_FLAGS "-Wpointer-arith")
+set (CMAKE_CXX_FLAGS "-Wcast-align")
+set (CMAKE_CXX_FLAGS "-Wstrict-prototypes")
+set (CMAKE_CXX_FLAGS "-Wstrict-overflow=5")
+set (CMAKE_CXX_FLAGS "-Wwrite-strings")
+set (CMAKE_CXX_FLAGS "-Waggregate-return")
+set (CMAKE_CXX_FLAGS "-Wcast-qual")
+set (CMAKE_CXX_FLAGS "-Wswitch-default")
+set (CMAKE_CXX_FLAGS "-Wswitch-enum")
+set (CMAKE_CXX_FLAGS "-Wconversion")
+set (CMAKE_CXX_FLAGS "-Wunreachable-code")
+
+#set (CMAKE_CXX_FLAGS "-Wno-unused-variable")
 
 # Set project name variable
 project(${PROJECT_NAME})

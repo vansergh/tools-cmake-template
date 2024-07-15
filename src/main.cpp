@@ -4,6 +4,7 @@
 using namespace std;
 
 int main() {
+    int c;
     MyClass1 a;
     MyClass2 b;
     a.SayHello();
