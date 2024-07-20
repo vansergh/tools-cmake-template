@@ -1,4 +1,6 @@
 #include <iostream>
+#include <boost/array.hpp>
+#include <openssl/crypto.h>
 #include "../lib/lib.hpp"
 
 using namespace std;

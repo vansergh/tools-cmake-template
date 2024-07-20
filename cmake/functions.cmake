@@ -1,5 +1,3 @@
-set(CMAKE_BUILD_TYPE Release)
-
 # Filter values through regex
 #   FilterRegex({INCLUDE | EXCLUDE} <regex> <listname> [items...])
 #   Element will included into result list if

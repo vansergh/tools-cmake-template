@@ -2,29 +2,29 @@
     "version": 8,
     "configurePresets": [
         {
-            "name": "mingw64-release",
-            "displayName": "[Release] GCC (mingw64)",
-            "description": "Использование компиляторов: C = C:\\dev\\msys64\\mingw64\\bin\\gcc.exe, CXX = C:\\dev\\msys64\\mingw64\\bin\\g++.exe",
+            "name": "windows-debug",
+            "displayName": "debug-gcc-mingw64",
+            "description": "C = c:\\dev\\msys64\\mingw64\\bin\\gcc.exe, CXX = c:\\dev\\msys64\\mingw64\\bin\\g++.exe",
             "generator": "MinGW Makefiles",
             "binaryDir": "${sourceDir}/out/build/${presetName}",
             "cacheVariables": {
                 "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}",
-                "CMAKE_C_COMPILER": "C:/dev/msys64/mingw64/bin/gcc.exe",
-                "CMAKE_CXX_COMPILER": "C:/dev/msys64/mingw64/bin/g++.exe",
-                "CMAKE_BUILD_TYPE": "Release"
+                "CMAKE_C_COMPILER": "c:/dev/msys64/mingw64/bin/gcc.exe",
+                "CMAKE_CXX_COMPILER": "c:/dev/msys64/mingw64/bin/g++.exe",
+                "CMAKE_BUILD_TYPE": "Debug"
             }
         },
         {
-            "name": "mingw64-debug",
-            "displayName": "[Debug] GCC (mingw64)",
-            "description": "Использование компиляторов: C = C:\\dev\\msys64\\mingw64\\bin\\gcc.exe, CXX = C:\\dev\\msys64\\mingw64\\bin\\g++.exe",
+            "name": "windows-release",
+            "displayName": "release-gcc-mingw64",
+            "description": "C = c:\\dev\\msys64\\mingw64\\bin\\gcc.exe, CXX = c:\\dev\\msys64\\mingw64\\bin\\g++.exe",
             "generator": "MinGW Makefiles",
             "binaryDir": "${sourceDir}/out/build/${presetName}",
             "cacheVariables": {
                 "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}",
-                "CMAKE_C_COMPILER": "C:/dev/msys64/mingw64/bin/gcc.exe",
-                "CMAKE_CXX_COMPILER": "C:/dev/msys64/mingw64/bin/g++.exe",
-                "CMAKE_BUILD_TYPE": "Debug"
+                "CMAKE_C_COMPILER": "c:/dev/msys64/mingw64/bin/gcc.exe",
+                "CMAKE_CXX_COMPILER": "c:/dev/msys64/mingw64/bin/g++.exe",
+                "CMAKE_BUILD_TYPE": "Release"
             }
         }
     ]

@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.30)
 
 #include cmake functions
 include(cmake/functions.cmake)
@@ -16,52 +16,19 @@ string(REGEX REPLACE ".*/(.*)" "\\1" CURRENT_FOLDER ${CURRENT_FOLDER_ABSOLUTE})
 set (PROJECT_NAME ${CURRENT_FOLDER})
 
 # Set C++ Standart
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set (CMAKE_CXX_FLAGS "-Wall")
-set (CMAKE_CXX_FLAGS "-pedantic")
 set (CMAKE_CXX_FLAGS "-Wextra")
 set (CMAKE_CXX_FLAGS "-Werror")
 set (CMAKE_CXX_FLAGS "-Wfatal-errors")
+set (CMAKE_CXX_FLAGS "-pedantic")
+set (CMAKE_CXX_FLAGS "-Wimplicit")
 set (CMAKE_CXX_FLAGS "-pedantic-errors")
-set (CMAKE_CXX_FLAGS "-Wundef")
-set (CMAKE_CXX_FLAGS "-Wshadow")
-set (CMAKE_CXX_FLAGS "-Wpointer-arith")
-set (CMAKE_CXX_FLAGS "-Wcast-align")
-set (CMAKE_CXX_FLAGS "-Wstrict-prototypes")
-set (CMAKE_CXX_FLAGS "-Wstrict-overflow=5")
-set (CMAKE_CXX_FLAGS "-Wwrite-strings")
-set (CMAKE_CXX_FLAGS "-Waggregate-return")
-set (CMAKE_CXX_FLAGS "-Wcast-qual")
-set (CMAKE_CXX_FLAGS "-Wswitch-default")
-set (CMAKE_CXX_FLAGS "-Wswitch-enum")
-set (CMAKE_CXX_FLAGS "-Wconversion")
-set (CMAKE_CXX_FLAGS "-Wunreachable-code")
 
 #set (CMAKE_CXX_FLAGS "-Wno-unused-variable")
 
 # Set project name variable
 project(${PROJECT_NAME})
-
-# Checking if CMakeLists.txt exists in project folders and include it
-#set(SRC ${CMAKE_CURRENT_SOURCE_DIR}/src)
-#if(EXISTS ${SRC}/CMakeLists.txt)
-#add_subdirectory(${SRC})
-#endif()
-
-#set(LIB ${CMAKE_CURRENT_SOURCE_DIR}/lib)
-#if(EXISTS ${LIB}/CMakeLists.txt)
-#add_subdirectory(${LIB})
-#endif()
-
-#set(OPT ${CMAKE_CURRENT_SOURCE_DIR}/opt)
-#if(EXISTS ${OPT}/CMakeLists.txt)
-#add_subdirectory(${OPT})
-#endif()
-
-#set(RES ${CMAKE_CURRENT_SOURCE_DIR}/res)
-#if(EXISTS ${RES}/CMakeLists.txt)
-#add_subdirectory(${RES})
-#endif()
 
 # Search of all sources and headers files
 file(GLOB_RECURSE SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/${SOURCES_INCLUDE_PATH})
@@ -81,5 +48,17 @@ message(STATUS  "Found sources:")
 list(APPEND CMAKE_MESSAGE_INDENT "\t\t")
 message(STATUS  "${SOURCES_STR}")
 
-# Build executable
+#include boost lib
+include(cmake/boost.cmake)
+
+#include boost lib
+include(cmake/openssl.cmake)
+
+# Build executable with standart libs
 add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
+
+# Build executable with boost
+TARGET_LINK_LIBRARIES(${PROJECT_NAME} LINK_PUBLIC ${Boost_LIBRARIES})
+
+# Build executable with openssl
+TARGET_LINK_LIBRARIES(${PROJECT_NAME} LINK_PUBLIC ${OPENSSL_LIBRARIES})

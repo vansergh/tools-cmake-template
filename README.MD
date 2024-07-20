@@ -17,7 +17,7 @@ You can set C++ Standart there
 
 ```
 # Set C++ Standart
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 ```
 
 Cmake will display all files included in project before build:
@@ -42,3 +42,21 @@ opt - for external libs
 out - ignored in .gitignore this is output dir of cmake
 res - resources dir
 src - your sources (main.cpp if you want)
+
+Boost and Openssl (find_package in cmake/boost.cmake and cmake/openssl.cmake)
+
+```
+#include boost lib
+include(cmake/boost.cmake)
+
+#include boost lib
+include(cmake/openssl.cmake)
+
+...
+
+# Build executable with boost
+TARGET_LINK_LIBRARIES(${PROJECT_NAME} LINK_PUBLIC ${Boost_LIBRARIES})
+
+# Build executable with openssl
+TARGET_LINK_LIBRARIES(${PROJECT_NAME} LINK_PUBLIC ${OPENSSL_LIBRARIES})
+```
