@@ -17,15 +17,13 @@ set (PROJECT_NAME ${CURRENT_FOLDER})
 
 # Set C++ Standart
 set(CMAKE_CXX_STANDARD 20)
-set (CMAKE_CXX_FLAGS "-Wall")
-set (CMAKE_CXX_FLAGS "-Wextra")
-set (CMAKE_CXX_FLAGS "-Werror")
-set (CMAKE_CXX_FLAGS "-Wfatal-errors")
-set (CMAKE_CXX_FLAGS "-pedantic")
-set (CMAKE_CXX_FLAGS "-Wimplicit")
-set (CMAKE_CXX_FLAGS "-pedantic-errors")
-
-#set (CMAKE_CXX_FLAGS "-Wno-unused-variable")
+add_compile_options(-Wall)
+add_compile_options(-Wextra)
+add_compile_options(-Werror)
+add_compile_options(-Wfatal-errors)
+add_compile_options(-pedantic)
+add_compile_options(-pedantic-errors)
+#add_compile_options(-Wno-unused-variable)
 
 # Set project name variable
 project(${PROJECT_NAME})
