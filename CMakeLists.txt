@@ -1,4 +1,8 @@
+if(WIN32)
 cmake_minimum_required(VERSION 3.30)
+else()
+cmake_minimum_required(VERSION 3.22)
+endif()
 
 # Include directory to use with #include <...>
 set(INCLUDE_DIRS "include")
