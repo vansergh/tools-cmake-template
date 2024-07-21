@@ -70,7 +70,9 @@ add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
 #target_link_libraries(${PROJECT_NAME} PUBLIC ${CMAKE_THREAD_LIBS_INIT})
 
 # Link winsock
+#if(WIN32)
 #TARGET_LINK_LIBRARIES(${PROJECT_NAME} LINK_PUBLIC wsock32 ws2_32)
+#endif()
 
 # Link boost
 #TARGET_LINK_LIBRARIES(${PROJECT_NAME} LINK_PUBLIC ${Boost_LIBRARIES})
