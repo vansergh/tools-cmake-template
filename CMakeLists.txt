@@ -65,8 +65,15 @@ INCLUDE_DIRECTORIES(${INCLUDE_DIRS})
 # Build executable with standart libs
 add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
 
-# Build executable with boost
+# threads package
+#find_package(Threads)
+#target_link_libraries(${PROJECT_NAME} PUBLIC ${CMAKE_THREAD_LIBS_INIT})
+
+# Link winsock
+#TARGET_LINK_LIBRARIES(${PROJECT_NAME} LINK_PUBLIC wsock32 ws2_32)
+
+# Link boost
 #TARGET_LINK_LIBRARIES(${PROJECT_NAME} LINK_PUBLIC ${Boost_LIBRARIES})
 
-# Build executable with openssl
+# Link openssl
 #TARGET_LINK_LIBRARIES(${PROJECT_NAME} LINK_PUBLIC ${OPENSSL_LIBRARIES})
