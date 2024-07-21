@@ -1,19 +1,14 @@
 cmake_minimum_required(VERSION 3.30)
 
-#include cmake functions
-include(cmake/functions.cmake)
+# Include directory to use with #include <...>
+set(INCLUDE_DIRS "include")
 
-# Include list of files to be built
+# Sources and headers masks
 set(SOURCES_INCLUDE_PATH *.cpp *.c *.cxx)
 set(HEADERS_INCLUDE_PATH *.hpp *.h)
 
 # Exclude list of files (regxp)
 set(EXCLUDE_PATH "(/out|/opt|/res)")
-
-# Converting current folder name to PROJECT_NAME
-string(REGEX REPLACE "/$" "" CURRENT_FOLDER_ABSOLUTE ${CMAKE_CURRENT_SOURCE_DIR})
-string(REGEX REPLACE ".*/(.*)" "\\1" CURRENT_FOLDER ${CURRENT_FOLDER_ABSOLUTE})
-set (PROJECT_NAME ${CURRENT_FOLDER})
 
 # Set C++ Standart
 set(CMAKE_CXX_STANDARD 20)
@@ -24,17 +19,24 @@ add_compile_options(-Wfatal-errors)
 add_compile_options(-pedantic)
 add_compile_options(-pedantic-errors)
 #add_compile_options(-Wno-unused-variable)
+#add_compile_options(-Wno-unused-parameter)
 
+#-------------------------------------------------------
+
+# Converting current folder name to PROJECT_NAME
+string(REGEX REPLACE "/$" "" CURRENT_FOLDER_ABSOLUTE ${CMAKE_CURRENT_SOURCE_DIR})
+string(REGEX REPLACE ".*/(.*)" "\\1" CURRENT_FOLDER ${CURRENT_FOLDER_ABSOLUTE})
+set (PROJECT_NAME ${CURRENT_FOLDER})
 # Set project name variable
 project(${PROJECT_NAME})
 
+#include search function .cmake file
+include(cmake/search_sources.cmake)
 # Search of all sources and headers files
 file(GLOB_RECURSE SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/${SOURCES_INCLUDE_PATH})
 file(GLOB_RECURSE HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/${HEADERS_INCLUDE_PATH})
-
 # Filter sources and headers to build without ignore list
 FilterRegex(EXCLUDE ${EXCLUDE_PATH} SOURCES ${SOURCES})
-
 # Print the list of files collected
 string(REPLACE ";"  "\n" HEADERS_STR "${HEADERS}")
 string(REPLACE ";"  "\n" SOURCES_STR "${SOURCES}")
@@ -46,17 +48,21 @@ message(STATUS  "Found sources:")
 list(APPEND CMAKE_MESSAGE_INDENT "\t\t")
 message(STATUS  "${SOURCES_STR}")
 
-#include boost lib
-include(cmake/boost.cmake)
 
 #include boost lib
-include(cmake/openssl.cmake)
+#include(cmake/boost.cmake)
+
+#include boost lib
+#include(cmake/openssl.cmake)
+
+#include dirs for #include <...>
+INCLUDE_DIRECTORIES(${INCLUDE_DIRS})
 
 # Build executable with standart libs
 add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
 
 # Build executable with boost
-TARGET_LINK_LIBRARIES(${PROJECT_NAME} LINK_PUBLIC ${Boost_LIBRARIES})
+#TARGET_LINK_LIBRARIES(${PROJECT_NAME} LINK_PUBLIC ${Boost_LIBRARIES})
 
 # Build executable with openssl
-TARGET_LINK_LIBRARIES(${PROJECT_NAME} LINK_PUBLIC ${OPENSSL_LIBRARIES})
+#TARGET_LINK_LIBRARIES(${PROJECT_NAME} LINK_PUBLIC ${OPENSSL_LIBRARIES})
