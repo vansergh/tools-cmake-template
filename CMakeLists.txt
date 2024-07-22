@@ -24,6 +24,7 @@ add_compile_options(-pedantic)
 add_compile_options(-pedantic-errors)
 #add_compile_options(-Wno-unused-variable)
 #add_compile_options(-Wno-unused-parameter)
+#add_compile_options(-Wno-unused-but-set-variable)
 
 #-------------------------------------------------------
 
