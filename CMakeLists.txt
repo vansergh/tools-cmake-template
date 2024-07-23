@@ -42,6 +42,7 @@ file(GLOB_RECURSE SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/${SOURCES_INCLUDE_PATH})
 file(GLOB_RECURSE HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/${HEADERS_INCLUDE_PATH})
 # Filter sources and headers to build without ignore list
 FilterRegex(EXCLUDE ${EXCLUDE_PATH} SOURCES ${SOURCES})
+FilterRegex(EXCLUDE ${EXCLUDE_PATH} HEADERS ${HEADERS})
 # Print the list of files collected
 string(REPLACE ";"  "\n" HEADERS_STR "${HEADERS}")
 string(REPLACE ";"  "\n" SOURCES_STR "${SOURCES}")
