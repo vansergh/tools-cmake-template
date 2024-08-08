@@ -12,7 +12,7 @@ set(SOURCES_INCLUDE_PATH *.cpp *.c *.cxx)
 set(HEADERS_INCLUDE_PATH *.hpp *.h)
 
 # Exclude list of files (regxp)
-set(EXCLUDE_PATH "/res/|/opt/")
+set(EXCLUDE_PATH "/res/|/opt/|/out/")
 
 #-------------------------------------------------------
 
