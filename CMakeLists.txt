@@ -12,20 +12,7 @@ set(SOURCES_INCLUDE_PATH *.cpp *.c *.cxx)
 set(HEADERS_INCLUDE_PATH *.hpp *.h)
 
 # Exclude list of files (regxp)
-set(EXCLUDE_PATH "(/out|/opt|/res|/cmake)")
-
-# Set C++ Standart
-set(CMAKE_CXX_STANDARD 20)
-add_compile_options(-Wall)
-add_compile_options(-Wextra)
-add_compile_options(-Werror)
-add_compile_options(-Wfatal-errors)
-add_compile_options(-Wdeprecated-copy)
-add_compile_options(-pedantic)
-add_compile_options(-pedantic-errors)
-#add_compile_options(-Wno-unused-variable)
-#add_compile_options(-Wno-unused-parameter)
-#add_compile_options(-Wno-unused-but-set-variable)
+set(EXCLUDE_PATH "/res/|/opt/")
 
 #-------------------------------------------------------
 
@@ -36,11 +23,41 @@ set (PROJECT_NAME ${CURRENT_FOLDER})
 # Set project name variable
 project(${PROJECT_NAME})
 
+#-------------------------------------------------------
+
+# Set C++ Flags
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wextra")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wfatal-errors")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pedantic")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pedantic-errors")
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-unused-variable")
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-unused-parameter")
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-unused-but-set-variable")
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-unused-local-typedefs")
+
+# Set C Flags
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wextra")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wfatal-errors")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -pedantic")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -pedantic-errors")
+#set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-unused-variable")
+#set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-unused-parameter")
+#set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-unused-but-set-variable")
+#set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-unused-local-typedefs")
+
+#-------------------------------------------------------
+
 #include search function .cmake file
 include(cmake/search_sources.cmake)
 # Search of all sources and headers files
 file(GLOB_RECURSE SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/${SOURCES_INCLUDE_PATH})
 file(GLOB_RECURSE HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/${HEADERS_INCLUDE_PATH})
+
 # Filter sources and headers to build without ignore list
 FilterRegex(EXCLUDE ${EXCLUDE_PATH} SOURCES ${SOURCES})
 FilterRegex(EXCLUDE ${EXCLUDE_PATH} HEADERS ${HEADERS})
