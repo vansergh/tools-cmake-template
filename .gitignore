@@ -37,3 +37,6 @@ output
 # VSCode hidden dir
 .vs
 .vscode
+
+# ignore CMakePresets
+CMakePresets.json
