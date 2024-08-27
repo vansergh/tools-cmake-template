@@ -3,7 +3,7 @@
     "configurePresets": [
         {
             "name": "windows-debug",
-            "displayName": "debug-gcc-mingw64",
+            "displayName": "windows-debug",
             "description": "C = c:\\dev\\msys64\\mingw64\\bin\\gcc.exe, CXX = c:\\dev\\msys64\\mingw64\\bin\\g++.exe",
             "generator": "MinGW Makefiles",
             "binaryDir": "${sourceDir}/out/build/${presetName}",
@@ -16,7 +16,7 @@
         },
         {
             "name": "windows-release",
-            "displayName": "release-gcc-mingw64",
+            "displayName": "windows-release",
             "description": "C = c:\\dev\\msys64\\mingw64\\bin\\gcc.exe, CXX = c:\\dev\\msys64\\mingw64\\bin\\g++.exe",
             "generator": "MinGW Makefiles",
             "binaryDir": "${sourceDir}/out/build/${presetName}",
@@ -24,6 +24,30 @@
                 "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}",
                 "CMAKE_C_COMPILER": "c:/dev/msys64/mingw64/bin/gcc.exe",
                 "CMAKE_CXX_COMPILER": "c:/dev/msys64/mingw64/bin/g++.exe",
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "linux-debug",
+            "displayName": "linux-debug",
+            "description": "C = /usr/bin/gcc, CXX = /usr/bin/g++",
+            "binaryDir": "${sourceDir}/out/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}",
+                "CMAKE_C_COMPILER": "/usr/bin/gcc",
+                "CMAKE_CXX_COMPILER": "/usr/bin/g++",
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "linux-release",
+            "displayName": "linux-release",
+            "description": "C = /usr/bin/gcc, CXX = /usr/bin/g++",
+            "binaryDir": "${sourceDir}/out/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}",
+                "CMAKE_C_COMPILER": "/usr/bin/gcc",
+                "CMAKE_CXX_COMPILER": "/usr/bin/g++",
                 "CMAKE_BUILD_TYPE": "Release"
             }
         }

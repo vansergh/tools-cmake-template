@@ -1,5 +1,5 @@
 #pragma once
-#include "..\lib.hpp"
+#include "../lib.hpp"
 
 class MyClass1 {
 public:

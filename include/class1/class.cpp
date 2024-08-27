@@ -1,4 +1,4 @@
-#include "..\lib.hpp"
+#include "../lib.hpp"
 #include <iostream>
 
 void MyClass1::SayHello(){
