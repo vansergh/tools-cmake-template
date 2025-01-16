@@ -1,4 +1,4 @@
 #pragma once
-#include "..\lib.hpp"
+#include "../lib.hpp"
 
 #define VAR1 123
